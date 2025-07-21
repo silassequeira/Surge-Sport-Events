@@ -17,6 +17,9 @@
     --color-white-200: #F7F8F8;
     --color-white-100: #FAFAFA;
 
+    --opacity-color: rgba(0, 0, 0, 0.6);
+    --opacity-modal: rgba(20, 21, 22, 0.92);
+
     --color-green: #228B22;
     --color-red: #CC0000;
     --color-blue-light: #87CEEB;
@@ -113,7 +116,7 @@ p {
 }
 
 p {
-    color: var(--color-grey-500);
+    color: var(--color-dark-500);
 }
 
 ul,
@@ -129,7 +132,7 @@ a:hover {
 }
 
 section {
-    padding: 2rem;
+    padding: 2rem 0.5rem;
     max-width: 100%;
 }
 
@@ -219,7 +222,7 @@ header nav {
     max-height: 0;
     user-select: none;
     overflow: hidden;
-    background-color: rgba(20, 21, 22, 0.92);
+    background-color: var(--opacity-modal);
     backdrop-filter: blur(7.5px);
     transition: max-height 0.5s ease-in-out;
 }
@@ -352,7 +355,7 @@ footer nav {
 }
 
 .grey-text {
-    color: var(--color-grey-500);
+    color: var(--color-dark-500);
 }
 
 .hidden {
@@ -532,7 +535,7 @@ footer nav {
 }
 
 .mw-10 {
-    max-width: 100%;
+    max-width: 116px;
 }
 
 
@@ -554,11 +557,12 @@ footer nav {
         font-size: 1.777rem;
     }
 
-    .text-size-1,
-    span,
-    button,
-    a,
-    p {
+.text-size-1,
+span,
+button,
+div,
+strong,
+p {
         font-size: 1rem;
     }
 
@@ -657,6 +661,9 @@ footer nav {
         --box-shadow-white: 0 5px 35px rgba(0, 0, 0, 0.1),
             inset 0 0.5px 0 rgba(0, 0, 0, 0.2),
             0 0 5px rgba(0, 0, 0, 0.1);
+
+        --opacity-color: rgba(255, 255, 255, 0.6);
+        --opacity-modal: rgba(235, 235, 235, 0.92);
     }
 }
 
@@ -684,11 +691,6 @@ input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
 }
 
 /* Custom Scrollbar */

@@ -105,7 +105,7 @@ const EventModal = (function () {
             if (!datePickerAvailable) {
                 editBtn.style.display = 'none'; // Hide the button
             } else {
-                editBtn.style.display = 'block'; // Show the button
+                editBtn.style.display = 'flex'; // Show the button
             }
 
             // Set edit button handler

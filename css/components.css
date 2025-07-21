@@ -11,7 +11,7 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    background-color: var(--color-dark-700);
+    background-color: var(--color-dark-900);
     transition: var(--transition);
     height: 100%;
     display: flex;
@@ -43,7 +43,7 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--opacity-color);
     color: var(--color-white-100);
     padding: 5px 10px;
     border-radius: 20px;
@@ -296,7 +296,7 @@
     width: 100vw;
     height: 100vh;
     overflow: auto;
-    background-color: rgba(20, 21, 22, 0.92);
+    background-color: var(--opacity-modal);
     backdrop-filter: blur(7.5px);
     backdrop-filter: blur(4px);
     animation: fadeIn 0.3s ease;
@@ -648,7 +648,7 @@
     gap: 15px;
     margin-bottom: 25px;
     padding: 20px;
-    background-color: var(--color-dark-700);
+    background-color: var(--color-dark-900);
     border-radius: 12px;
     border: 1px solid var(--color-dark-600);
     /* Mobile-first: single column */
@@ -678,7 +678,7 @@
 }
 
 .toast {
-    background-color: var(--color-dark-700);
+    background-color: var(--color-dark-900);
     border-left: 5px solid var(--color-green);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
@@ -702,7 +702,7 @@
     width: 28px;
     height: 28px;
     min-width: 28px;
-    background-color: rgba(76, 175, 80, 0.15);
+    background-color: var(--opacity-modal);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -917,10 +917,10 @@
 }
 
 .slider-card-content {
-    background-color: var(--color-dark-700);
+    background-color: var(--color-dark-900);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--box-shadow-white);
     /* TODO: map to dark mode token */
     height: 100%;
     transition: var(--transition);
@@ -943,7 +943,7 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--opacity-color);
     /* TODO: map to dark mode token */
     color: var(--color-white-100);
     padding: 5px 10px;
@@ -982,7 +982,6 @@
     border-radius: 50%;
     background: transparent;
     border: none;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -990,10 +989,6 @@
     position: absolute;
     z-index: 2;
     transition: var(--transition);
-}
-
-.slider-arrow:hover {
-    background: var(--color-grey-600);
 }
 
 .slider-arrow.prev {
