@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://si-25-design-challenge-e98419.gitlab.io/sitemap.xml
+Sitemap: https://silassequeira.github.io/Surge-Sport-Events//sitemap.xml
