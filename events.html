@@ -283,29 +283,29 @@
         </div>
     </div>
 
-    <footer>
-        <nav aria-label="Footer Navigation" class="grid align-center-between items-flex-start w-100">
-            <span class="svg-surge-logo logo hidden-mobile" data-svg-class="site-logo"></span>
-            <ul class="flex-col align-center">
+    <footer class="flex-col align-center-between mt-4 mb-2 ">
+        <nav aria-label="Footer Navigation" class="flex-row align-center-between items-flex-start mt-2 wrap p-1 gap-1">
+            <span class="svg-surge-logo logo pt-2-5 hidden-mobile" data-svg-class="site-logo"></span>
+            <ul class="flex-col items-flex-start pt-2-5">
                 <li><a href="index.html#upcoming-events">Upcoming Highlights</a></li>
                 <li><a href="index.html#about">About Surge</a></li>
                 <li><a href="events.html">All Events</a></li>
             </ul>
-            <div class="flex-col align-center">
-                <h3>Filters</h3>
-                <ul class="flex-col align-center">
-                    <li><a href="events.html#filter1">Filter Events by Running</a></li>
-                    <li><a href="events.html#filter2">Filter Events by Cycling</a></li>
-                    <li><a href="events.html#filter3">Filter Events by Soccer</a></li>
-                    <li><a href="events.html#filter4">Filter Events by Volley</a></li>
-                    <li><a href="events.html#filter5">Filter Events by Other</a></li>
+            <div class="flex-col items-flex-start ">
+                <h3 class="text-size-1 bold">Filters</h3>
+                <ul class="flex-col align-center items-flex-start">
+                    <li><a href="events.html?category=running">Filter Events by Running</a></li>
+                    <li><a href="events.html?category=cycling">Filter Events by Cycling</a></li>
+                    <li><a href="events.html?category=soccer">Filter Events by Soccer</a></li>
+                    <li><a href="events.html?category=volleyball">Filter Events by Volley</a></li>
+                    <li><a href="events.html?category=other-all">Filter Events by Other</a></li>
                 </ul>
             </div>
 
-            <div class="flex-col align-center" id="contact">
-                <h3>Contacts</h3>
-                <div class="flex-col align-center">
-                    <ul class="flex-col align-center">
+            <div class="flex-col items-flex-start" id="contact">
+                <h3 class="text-size-1 bold">Contacts</h3>
+                <div class="flex-col align-center ">
+                    <ul class="flex-col align-center items-flex-start">
                         <li>
                             <span class="svg-email icon" aria-hidden="true"></span>
                             <span>Email - info@surgecoimbra.pt</span>
@@ -314,7 +314,7 @@
                             <span class="svg-phone icon" aria-hidden="true"></span>
                             <span>Phone - +351 239 123 456</span>
                         </li>
-                        <li class="flex-row items-flex-start">
+                        <li class="flex-row items-flex-start gap-05">
                             <span class="svg-clock icon" aria-hidden="true"></span>
                             <div class="flex-col align-flex-end">
                                 <span>Hours - Mon-Fri: 9:00-18:00</span>
@@ -325,11 +325,15 @@
                 </div>
             </div>
         </nav>
-        <p>&copy; 2025 Surge. All rights reserved.</p>
-        <a href="#top" class="flex-row align-center">
-            <span>Back to Top</span>
-            <div class="arrow-btn-up"></div>
-        </a>
+
+        <div class="flex-row align-center-between mt-4">
+            <p>&copy; 2025 Surge. All rights reserved.</p>
+            <a href="#top" class="flex-row align-center">
+                <span>Back to Top</span>
+                <div class="svg-arrow top icon-small gap-03"></div>
+            </a>
+
+        </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
 

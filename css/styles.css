@@ -116,7 +116,7 @@ p {
 }
 
 p {
-    color: var(--color-dark-500);
+    color: var(--color-grey-300);
 }
 
 ul,
@@ -355,7 +355,7 @@ footer nav {
 }
 
 .grey-text {
-    color: var(--color-dark-500);
+    color: var(--color-grey-500);
 }
 
 .hidden {
