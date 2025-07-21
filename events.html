@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surge — Events</title>
+    <meta name="description"
+        content="Surge: Your hub for all upcoming sports events in Coimbra – soccer, runs, cycling, and more.">
+    <meta name="author" content="Surge">
+    <link rel="canonical" href="https://si-25-design-challenge-e98419.gitlab.io/">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="css/minified/styles.css">
+    <link rel="stylesheet" href="css/minified/components.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <link rel="stylesheet" href="css/minified/datepicker-theme.css">
+
+
+    <script src="js/script.js" defer></script>
+
+</head>
+
+<body id="top">
+    <div id="toastContainer" class="toast-container"></div>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <header class="flex-row align-center-between">
+        <a href="/" aria-label="Surge Home">
+            <span class="svg-surge-logo logo" data-svg-class="site-logo"></span>
+        </a>
+        <input id="burger" type="checkbox">
+        <label for="burger" class="svg-hamburger active"></label>
+        <nav aria-label="Main Navigation">
+            <ul class="flex-col align-center-evenly items-flex-start">
+                <li><a href="/index.html">Events</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu hamburger-icon hidden" id="mobileMenuToggle"></button>
+        </nav>
+    </header>
+
+    <main id="main-content" class="flex-col align-center pt-4 mb-4">
+        <section id="eventsSection">
+
+            <div class="events-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Upcoming Events</h2>
+
+                        <!-- Category filters -->
+                        <div class="filters">
+                            <button class="btn" data-category="all">All Events</button>
+                            <button class="btn" data-category="running"><span
+                                    class="svg-running icon"></span>Running</button>
+                            <button class="btn" data-category="soccer"><span
+                                    class="svg-soccer icon"></span>Soccer</button>
+                            <button class="btn" data-category="cycling"><span
+                                    class="svg-cycling icon"></span>Cycling</button>
+                            <button class="btn" data-category="volleyball"><span
+                                    class="svg-volley icon mr-03"></span>Volleyball</button>
+                            <div class="filter-dropdown">
+                                <button class="btn mw-10" id="otherCategoriesBtn" data-category="other">Other
+                                    Sports <span class="svg-arrow down icon-small"
+                                        style="margin-right: 0; margin-left: 0.5rem;"></span></button>
+                                <div class="dropdown-content" id="otherCategoriesDropdown">
+                                    <!-- Dropdown items will be added dynamically -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Calendar filter -->
+                        <div class="calendar-filter flex-row align-center-between">
+                            <div class="date-filter">
+                                <div class="date-container flex-row align-center" style="gap:0;">
+                                    <label for="Date" class="date-label">Date:</label>
+                                    <div class="date-input-group">
+                                        <input type="text" id="startDate" class="date-input">
+                                    </div>
+                                    <span class="date-separator">-</span>
+                                    <div class="date-input-group">
+                                        <input type="text" id="endDate" class="date-input">
+                                    </div>
+                                </div>
+                                <div class="filter-actions">
+                                    <button id="applyDateFilter" class="btn-white">Apply</button>
+                                    <button id="resetDateFilter" class="btn-white">Reset</button>
+                                </div>
+                            </div>
+                            <button id="addEventBtn" class="btn mw-10">
+                                <span class="svg-plus icon"></span>
+                                Add New Event
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="events-grid" id="eventsGrid">
+                        <!-- Events will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Event Detail Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+                <h2 id="modalTitle">Event Title</h2>
+                <p id="modalDate">Event Date</p>
+            </div>
+            <div class="modal-body">
+                <div class="event-details" id="modalDetails">
+                    <!-- Event details will be populated by JavaScript -->
+                </div>
+                <div class="flex-row items-flex-start">
+                    <button class="btn-green mt-2" id="joinEventBtn">Join Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Event Form Modal -->
+    <div id="eventFormModal" class="modal">
+        <div class="modal-content event-form-modal">
+            <div class="modal-header">
+                <button class="close-modal" id="closeFormBtn">&times;</button>
+                <h2 id="formTitle">Add New Event</h2>
+            </div>
+            <div class="modal-body">
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label>Event Image</label>
+                        <div class="image-drop-zone" id="imageDropZone">
+                            <div class="drop-zone-prompt">
+                                <span class="upload-icon">↑</span>
+                                <p>Drag & drop an image here or click to browse</p>
+                                <p class="drop-zone-info">Max file size: 2MB</p>
+                            </div>
+                            <div class="image-preview" id="imagePreview"></div>
+                            <input type="file" id="eventImageUpload" accept="image/*" hidden>
+                            <input type="hidden" id="eventImageData">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventTitle">Event Title</label>
+                        <input type="text" id="eventTitle" required>
+                    </div>
+
+                    <div class="form-group p-relative">
+                        <label for="eventDate">Date</label>
+                        <input type="text" id="eventDate" class="date-input surge-date-input" required>
+                        <span class="svg-calendar icon calendar"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventTime">Time</label>
+                        <input type="time" id="eventTime" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventLocation">Location</label>
+                        <input type="text" id="eventLocation" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventCategory">Category</label>
+                        <select id="eventCategory" required>
+                            <option value="running">Running</option>
+                            <option value="soccer">Soccer</option>
+                            <option value="cycling">Cycling</option>
+                            <option value="volleyball">Volleyball</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="customCategoryGroup" style="display: none;">
+                        <label for="customCategory">Custom Category Name</label>
+                        <input type="text" id="customCategory" placeholder="Enter custom category name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maxParticipants">Maximum Participants</label>
+                        <input type="number" id="maxParticipants" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventDescription">Description</label>
+                        <textarea id="eventDescription" rows="4" required></textarea>
+                    </div>
+
+                    <input type="hidden" id="eventId">
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-blue">Save Event</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content registration-modal">
+            <div class="modal-header">
+                <button class="close-modal" id="closeRegistrationBtn">&times;</button>
+                <h2>Join Event</h2>
+                <p id="registrationEventTitle">Event Title</p>
+            </div>
+            <div class="modal-body">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" min="1" max="120" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Experience Level</label>
+                        <select id="experience" required>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Comments</label>
+                        <textarea id="comments" rows="3"></textarea>
+                    </div>
+
+                    <input type="hidden" id="registrationEventId">
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-green">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="registrationSuccessModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="modal-header-success">
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="success-icon">
+                    <span class="svg-correct" aria-hidden="true"></span>
+                </div>
+                <h2>You've successfully registered!</h2>
+                <p class="success-message">
+                    Get ready for the Surge Coimbra event! A confirmation email with all the details
+                    is heading to your inbox now. Let's make it an unforgettable experience!
+                </p>
+                <div class="form-actions align-center">
+                    <button id="finishRegistrationBtn" class="btn-green">Finish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <nav aria-label="Footer Navigation" class="grid align-center-between items-flex-start w-100">
+            <span class="svg-surge-logo logo hidden-mobile" data-svg-class="site-logo"></span>
+            <ul class="flex-col align-center">
+                <li><a href="#upcoming-events">Upcoming Highlights</a></li>
+                <li><a href="#about">About Surge</a></li>
+                <li><a href="#events">All Events</a></li>
+            </ul>
+            <div class="flex-col align-center">
+                <h3>Filters</h3>
+                <ul class="flex-col align-center">
+                    <li><a href="#filter1">Filter Events by Running</a></li>
+                    <li><a href="#filter2">Filter Events by Cycling</a></li>
+                    <li><a href="#filter3">Filter Events by Soccer</a></li>
+                    <li><a href="#filter4">Filter Events by Volley</a></li>
+                    <li><a href="#filter5">Filter Events by Other</a></li>
+                </ul>
+            </div>
+
+            <div class="flex-col align-center" id="contact">
+                <h3>Contacts</h3>
+                <div class="flex-col align-center">
+                    <ul class="flex-col align-center">
+                        <li>
+                            <span class="svg-email icon" aria-hidden="true"></span>
+                            <span>Email - info@surgecoimbra.pt</span>
+                        </li>
+                        <li>
+                            <span class="svg-phone icon" aria-hidden="true"></span>
+                            <span>Phone - +351 239 123 456</span>
+                        </li>
+                        <li class="flex-row items-flex-start">
+                            <span class="svg-clock icon" aria-hidden="true"></span>
+                            <div class="flex-col align-flex-end">
+                                <span>Hours - Mon-Fri: 9:00-18:00</span>
+                                <span>Sat: 10:00-16:00</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <p>&copy; 2025 Surge. All rights reserved.</p>
+        <a href="#top" class="flex-row align-center">
+            <span>Back to Top</span>
+            <div class="arrow-btn-up"></div>
+        </a>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+    <script src="js/svg-loader.js"></script>
+
+    <script src="js/app/utils.js"></script>
+    <script src="js/app/modal-manager.js"></script>
+    <script src="js/app/notifications.js"></script>
+    <script src="js/app/date-picker.js"></script>
+
+    <script src="js/app/events-data.js"></script>
+
+    <script src="js/app/ui.js"></script>
+    <script src="js/app/event-display.js"></script>
+    <script src="js/app/event-modal.js"></script>
+    <script src="js/app/event-form.js"></script>
+    <script src="js/app/event-registration.js"></script>
+    <script src="js/app/event-slider.js"></script>
+
+    <script src="js/app/app.js"></script>
+
+
+</body>
+
+</html>
