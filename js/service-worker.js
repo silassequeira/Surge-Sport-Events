@@ -2,7 +2,8 @@ const CACHE_NAME = 'surge-cache-v1';
 const urlsToCache = [
     '/',
     '/index.html',
-    '/css/styles.css',
+    '/events.html',
+    '/css/minified/styles.css',
     '/js/script.js'
 ];
 
